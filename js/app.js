@@ -46,7 +46,7 @@ const loadCategory = (categorys) => {
 //Now a function for load and show news by category clicking
 const loadNewsData = (id) => {
     // console.log(typeof id)
-    console.log(id)
+    // console.log(id)
     try {
         fetch(`https://openapi.programming-hero.com/api/news/category/0${id}`)
             .then(res => res.json())
@@ -96,13 +96,26 @@ const showNews = (news) => {
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                    additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <h5 class="card-title">${oneNews.title}</h5>
+                <p class="card-text">${oneNews.details.length > 200 ? oneNews.details.slice(0, 200) : oneNews.details}...</p>
             </div>
+
+            <div>
+            all container
+
+            <div>
+            author container
+            </div>
+        <div>
+        views Container
         </div>
-    </div>`
+        <div>
+        show details button container
+        </div>
+            </div>
+          
+        </div>
+    </div > `
 
         newsContainer.appendChild(div)
     });
