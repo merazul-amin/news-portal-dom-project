@@ -86,7 +86,7 @@ const showNews = (news) => {
     const newsArray = news.data
     // console.log(newsArray)
     newsArray.forEach(oneNews => {
-        console.log(oneNews)
+        // console.log(oneNews)
         const div = document.createElement('div')
         div.classList.add('card')
         div.classList.add('mb-3')
@@ -115,7 +115,9 @@ const showNews = (news) => {
             </div>
     
             <div>
-            <button onclick="loadModalData('${oneNews._id}')" class="btn btn-success">Show More</button>
+            <button onclick="loadModalData('${oneNews._id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Show More
+        </button>
             </div>
     
                 </div>
@@ -138,7 +140,7 @@ const loadModalData = (id) => {
     try {
         fetch(`https://openapi.programming-hero.com/api/news/${id}`)
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => showDetailsOnModal(data.data))
     }
     catch (error) {
         const errorContainer = document.getElementById('error-container')
@@ -156,5 +158,29 @@ const loadModalData = (id) => {
     }
 
 }
+
+const showDetailsOnModal = (data) => {
+    data.forEach(obj => {
+        console.log(obj)
+        const newsModal = document.getElementById('news-details')
+        newsModal.innerHTML = `
+        <p>
+        ${obj.details}
+        </p>
+
+        <p>Released date: ${obj.author.published_date ? obj.author.published_date : 'Date unavailable.'}</p>
+        <p>Author: ${obj.author.name ? obj.author.name : 'Author Name unavailable.'}</p>
+    
+
+        <img src="" alt="">
+      
+        `
+
+    });
+
+}
+
+
+//this function is called for load by default data
 loadNewsData(08)
 
