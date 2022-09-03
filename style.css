@@ -1,0 +1,48 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+#sorting-container {}
+
+#sortbyviews {}
+
+#buttons2 {}
+
+.two-btn {}
+
+
+
+
+@media screen and (max-width:1000px) {
+
+
+    #buttons2 {
+        width: 50% !important;
+    }
+}
+
+@media screen and (max-width:765px) {
+    #anchorContainer {
+        flex-direction: column !important;
+    }
+}
+
+@media screen and (max-width:510px) {
+
+
+
+    #sorting-container {
+        flex-direction: column !important;
+    }
+
+    #sortbyviews {
+        width: 70% !important;
+        margin: 10px auto;
+
+    }
+
+    #buttons2 {
+        width: 80% !important;
+        margin: 20px auto;
+    }
+}

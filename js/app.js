@@ -89,7 +89,7 @@ const showNews = (news) => {
     //set the number of category news
     const categoriesNewsNumber = document.getElementById('category-items')
     categoriesNewsNumber.innerHTML = `
-    <p class="p-3">${news.data.length ? news.data.length + ' items found for this category.' : 'Now data found for this category.'} </p>
+    <p class="p-3">${news.data.length ? news.data.length + ' items found for this category.' : 'No data found for this category.'} </p>
     `
 
     //now set total news in ui
@@ -104,7 +104,6 @@ const showNews = (news) => {
 
 
     newsArray.forEach(oneNews => {
-        // console.log(oneNews)
         const div = document.createElement('div')
         div.classList.add('card')
         div.classList.add('mb-3')
@@ -155,7 +154,7 @@ const showNews = (news) => {
 
 const loadModalData = (id) => {
 
-    fetch(`https://openapi.programming-hero.com/api/nes/${id}`)
+    fetch(`https://openapi.programming-hero.com/api/news/${id}`)
         .then((response) => {
             if (response.ok) {
                 return response.json();
@@ -183,7 +182,6 @@ const loadModalData = (id) => {
 
 const showDetailsOnModal = (data) => {
     data.forEach(obj => {
-        console.log(obj)
         const newsModal = document.getElementById('news-details')
         newsModal.innerHTML = `
         <p>

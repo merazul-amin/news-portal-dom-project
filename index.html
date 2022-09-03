@@ -16,12 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&display=swap"
         rel="stylesheet">
-
-    <style>
-        * {
-            font-family: 'Roboto', sans-serif;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="container">
@@ -49,7 +44,8 @@
 
 
                         </ul>
-                        <div class="d-flex text-decoration-none justify-content-around fw-bolder w-25">
+                        <div id="anchorContainer"
+                            class="d-flex text-decoration-none justify-content-around fw-bolder w-25">
                             <a class="text-decoration-none fw-bolder fs-4 text-info" href="index.html">News</a>
                             <a class="text-decoration-none fw-bolder fs-4 text-info" href="blogs.html">Blogs</a>
                         </div>
@@ -77,15 +73,15 @@
         </div>
 
         <!-- Sorting view -->
-        <div class="d-flex flex-column flex-md-row justify-content-between my-4 bg-light rounded p-3"
+        <div id="sorting-container" class="d-flex flex-row justify-content-between my-4 bg-light rounded p-3"
             style="min-height: 100px;">
-            <div class="w-25 d-flex justify-content-around align-items-center">
+            <div id="sortbyviews" class="w-25 d-flex justify-content-around align-items-center">
                 <span>Sort By views: </span><span>Default
                     <i class="fa-solid fa-angle-down"></i></span>
             </div>
-            <div class="d-flex flex-column flex-md-row align-items-center w-25 justify-content-around">
-                <button type="button" style="min-width: 150px;" class="btn btn-primary">Today's Pick</button> <button
-                    type="button" class="btn btn-outline-info">Trending</button>
+            <div id="buttons2" class="d-flex flex-row align-items-center w-25 justify-content-around">
+                <button type="button" style="min-width: 150px;" class="btn btn-primary two-btn">Today's Pick</button>
+                <button type="button" class="btn btn-outline-info two-btn">Trending</button>
             </div>
         </div>
 
