@@ -115,7 +115,7 @@ const showNews = (news) => {
             </div>
     
             <div>
-            <button onclick="loadModal()" class="btn btn-success">Show More</button>
+            <button onclick="loadModalData('${oneNews._id}')" class="btn btn-success">Show More</button>
             </div>
     
                 </div>
@@ -131,5 +131,30 @@ const showNews = (news) => {
 
 }
 
+//This function is for load modal data
+
+const loadModalData = (id) => {
+    // console.log(id)
+    try {
+        fetch(`https://openapi.programming-hero.com/api/news/${id}`)
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }
+    catch (error) {
+        const errorContainer = document.getElementById('error-container')
+        errorContainer.innerHTML = `
+        <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col">
+                <div class="card-body">
+                    <h1 class="card-title">${error}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+        `
+    }
+
+}
 loadNewsData(08)
 
