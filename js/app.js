@@ -21,6 +21,16 @@ catch (error) {
     `
 }
 
+//Loading Spinner function 
+const spinner = (isLoading) => {
+    const spinnerContainer = document.getElementById('spinner-container')
+    if (isLoading) {
+        spinnerContainer.classList.remove('d-none')
+    } else {
+        spinnerContainer.classList.add('d-none')
+    }
+}
+
 
 //Now set a function for set catagories name in ui
 
@@ -45,6 +55,7 @@ const loadCategory = (categorys) => {
 
 //Now a function for load and show news by category clicking
 const loadNewsData = (id) => {
+    spinner(true)
     // console.log(typeof id)
     // console.log(id)
     try {
@@ -85,6 +96,7 @@ const showNews = (news) => {
     newsContainer.innerHTML = ''
     const newsArray = news.data
     // console.log(newsArray)
+
     newsArray.forEach(oneNews => {
         // console.log(oneNews)
         const div = document.createElement('div')
@@ -129,7 +141,7 @@ const showNews = (news) => {
 
         newsContainer.appendChild(div)
     });
-
+    spinner(false)
 
 }
 
