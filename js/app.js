@@ -1,25 +1,29 @@
-//Firsty load data of category 
-
-try {
-    fetch(` https://openapi.programming-hero.com/api/news/categories`)
-        .then(res => res.json())
-        .then(data => loadCategory(data))
-}
-//this catch is for show error in fetching data in ui
-catch (error) {
-    const errorContainer = document.getElementById('error-container')
-    errorContainer.innerHTML = `
-    <div class="card mb-3">
-    <div class="row g-0">
-        <div class="col">
-            <div class="card-body">
-                <h1 class="card-title">${error}</h1>
+//Firsty load data of category  and emplemet of try catch for showing error types
+fetch(` https://openapi.programming-hero.com/api/news/categories`)
+    .then((response) => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error('Something went wrong');
+    })
+    .then((data) => {
+        loadCategory(data)
+    })
+    .catch((error) => {
+        const errorContainer = document.getElementById('error-container')
+        errorContainer.innerHTML = `
+            <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col">
+                    <div class="card-body">
+                        <h1 class="card-title">${error}</h1>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-    `
-}
+            `
+    });
+
 
 //Loading Spinner function 
 const spinner = (isLoading) => {
@@ -36,12 +40,8 @@ const spinner = (isLoading) => {
 
 
 const loadCategory = (categorys) => {
-    // console.log(categorys.data)
     const categoriesArray = categorys.data.news_category
-    // console.log(categoriesArray)
-
     categoriesArray.forEach(category => {
-        // console.log(category)
         const categorisContainer = document.getElementById('categories-container')
         const h5 = document.createElement('h5')
 
@@ -54,32 +54,34 @@ const loadCategory = (categorys) => {
 }
 
 //Now a function for load and show news by category clicking
+
 const loadNewsData = (id) => {
     spinner(true)
-    // console.log(typeof id)
-    // console.log(id)
-    try {
-        fetch(`https://openapi.programming-hero.com/api/news/category/0${id}`)
-            .then(res => res.json())
-            .then(data => showNews(data))
-    }
 
-    //this catch is for show error in fetching data in ui
-    catch (error) {
-        const errorContainer = document.getElementById('error-container')
-        errorContainer.innerHTML = `
-        <div class="card mb-3">
-        <div class="row g-0">
-            <div class="col">
-                <div class="card-body">
-                    <h1 class="card-title">${error}</h1>
+    fetch(`https://openapi.programming-hero.com/api/news/category/0${id}`)
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Something went wrong');
+        })
+        .then((data) => {
+            showNews(data)
+        })
+        .catch((error) => {
+            const errorContainer = document.getElementById('error-container')
+            errorContainer.innerHTML = `
+                <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col">
+                        <div class="card-body">
+                            <h1 class="card-title">${error}</h1>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-        `
-    }
-
+                `
+        });
 }
 
 
@@ -149,30 +151,34 @@ const showNews = (news) => {
 
 }
 
-//This function is for load modal data
+//This function is for load modal data and build with try catch error handling
 
 const loadModalData = (id) => {
-    // console.log(id)
-    try {
-        fetch(`https://openapi.programming-hero.com/api/news/${id}`)
-            .then(res => res.json())
-            .then(data => showDetailsOnModal(data.data))
-    }
-    catch (error) {
-        const errorContainer = document.getElementById('error-container')
-        errorContainer.innerHTML = `
-        <div class="card mb-3">
-        <div class="row g-0">
-            <div class="col">
-                <div class="card-body">
-                    <h1 class="card-title">${error}</h1>
+
+    fetch(`https://openapi.programming-hero.com/api/nes/${id}`)
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Something went wrong');
+        })
+        .then((data) => {
+            showDetailsOnModal(data.data)
+        })
+        .catch((error) => {
+            const errorContainer = document.getElementById('error-container')
+            errorContainer.innerHTML = `
+            <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col">
+                    <div class="card-body">
+                        <h1 class="card-title">${error}</h1>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-        `
-    }
-
+            `
+        });
 }
 
 const showDetailsOnModal = (data) => {
