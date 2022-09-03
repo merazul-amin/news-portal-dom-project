@@ -2,16 +2,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
-#sorting-container {}
-
-#sortbyviews {}
-
-#buttons2 {}
-
-.two-btn {}
-
-
-
+/* Some media query for responsiveness */
 
 @media screen and (max-width:1000px) {
 
