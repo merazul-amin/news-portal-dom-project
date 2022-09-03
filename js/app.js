@@ -88,7 +88,7 @@ const showNews = (news) => {
     //set the number of category news
     const categoriesNewsNumber = document.getElementById('category-items')
     categoriesNewsNumber.innerHTML = `
-    <p>${news.data.length} items found for this category.</p>
+    <p>${news.data.length ? news.data.length + 'items found for this category.' : 'Now data found for this category.'} </p>
     `
 
     //now set total news in ui
@@ -119,7 +119,7 @@ const showNews = (news) => {
                </div>
             
 
-            <div class="d-flex flex-row align-items-center justify-content-around mt-2">
+            <div class="d-flex flex-column flex-sm-row align-items-center justify-content-around mt-2">
 
             <div class="d-flex flex-row align-items-center">
             <span><img style="width: 50px; height: 50px; border-radius: 50%;" src="${oneNews.author.img ? oneNews.author.img : 'No photo'}" alt=""></span>
@@ -132,7 +132,7 @@ const showNews = (news) => {
             </div>
     
             <div>
-            <button onclick="loadModalData('${oneNews._id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button onclick="loadModalData('${oneNews._id}')" type="button" style="min-width:150px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Show More
         </button>
             </div>
