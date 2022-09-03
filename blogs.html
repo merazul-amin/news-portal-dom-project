@@ -173,63 +173,39 @@
             </div>
             <!-- Questions 3 -->
             <div class="my-5">
-                <h3>2. What are the difference between map, forEach, filter, find?</h3>
-                <p> <i class="fa-solid fa-arrow-right"></i> Difference between map, forEach, filter, find is given
+                <h3>3. What are the difference between map, forEach, filter, find?</h3>
+                <p> <i class="fa-solid fa-arrow-right"></i> Difference between map, forEach and filter, find is given
                     below:</p>
-                <table class="table table-primary">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Regular</th>
-                            <th scope="col">Arrow</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Inside of a regular JavaScript function, this value is dynamic.</td>
-                            <td>The behavior of this inside of an arrow function differs considerably from the regular
-                                function's this behavior. The arrow function doesn't define its own execution context.
-                            </td>
+                <div class="d-flex">
+                    <div class="w-50">
+                        <p class="fs-4 text-center">map and foreach</p>
+                        <ul>
+                            <li>map returns an array but foreach dosn't.</li>
+                            <li>map gives results in array but foreach gives resutls in variable or return value.</li>
+                            <li>The sytax of map function is map() and the syntax of foreach is forEach()</li>
+                            <li>map takes 3 parametres, forEach also takes 3 parametres.</li>
+                        </ul>
+                    </div>
+                    <div class="w-50">
+                        <p class="fs-4 text-center">find and filter</p>
+                        <ul>
+                            <li>filter is returns an array, but find dosen't.</li>
+                            <li>filter gives all the matching elements but find give only first one.</li>
+                            <li>The find() method search through all the child elements only, The filter() method search
+                                through all the elements</li>
+                            <li>In filter() method a value is passed to the function as its this value,The find() method
+                                search through all the child elements only.</li>
+                        </ul>
+                    </div>
+                </div>
 
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>The regular function can easily construct objects.</td>
-                            <td>But and arrow function can't construct object.</td>
 
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Inside the body of a regular function, arguments is a special array-like object
-                                containing the list of arguments with which the function has been invoked.</td>
-                            <td>On the other side, no arguments special keyword is defined inside an arrow function.
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>'return expression' statement returns the result from a function.</td>
-                            <td>If the arrow function contains one expression, and you omit the function's curly braces,
-                                then the expression is implicitly returned. These are the inline arrows function.
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>The regular functions are the usual way to define methods on classes.</td>
-                            <td>We can use the arrow function as methods inside classes.</td>
-
-                        </tr>
-
-                    </tbody>
-                </table>
             </div>
 
 
             <!-- Questions 4 -->
             <div>
-                <h3>What can we do by JavaScript Template Literals?</h3>
+                <h3>4. What can we do by JavaScript Template Literals?</h3>
                 <h5> <i class="fa-solid fa-arrow-right"></i> We can do many thing by Template literals is js. Which is
                     given below:</h5>
                 <ul>
