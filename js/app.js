@@ -84,11 +84,10 @@ const loadNewsData = (id) => {
 
 
 const showNews = (news) => {
-    // console.log(news)
     //set the number of category news
     const categoriesNewsNumber = document.getElementById('category-items')
     categoriesNewsNumber.innerHTML = `
-    <p>${news.data.length ? news.data.length + 'items found for this category.' : 'Now data found for this category.'} </p>
+    <p class="p-3">${news.data.length ? news.data.length + ' items found for this category.' : 'Now data found for this category.'} </p>
     `
 
     //now set total news in ui
