@@ -40,13 +40,15 @@ const spinner = (isLoading) => {
 
 
 const loadCategory = (categorys) => {
+
     const categoriesArray = categorys.data.news_category
     categoriesArray.forEach(category => {
+        // console.log(category.category_name)
         const categorisContainer = document.getElementById('categories-container')
         const h5 = document.createElement('h5')
 
         h5.innerHTML = `
-        <h5 onclick="loadNewsData(${category.category_id})"  style="cursor: pointer;">${category.category_name}</h5>
+        <h5 onclick="loadNewsData(${category.category_id},'${category.category_name}')"  style="cursor: pointer;">${category.category_name}</h5>
         `
         categorisContainer.appendChild(h5)
     });
@@ -55,7 +57,7 @@ const loadCategory = (categorys) => {
 
 //Now a function for load and show news by category clicking
 
-const loadNewsData = (id) => {
+const loadNewsData = (id, name) => {
     spinner(true)
 
     fetch(`https://openapi.programming-hero.com/api/news/category/0${id}`)
@@ -66,7 +68,7 @@ const loadNewsData = (id) => {
             throw new Error('Something went wrong');
         })
         .then((data) => {
-            showNews(data)
+            showNews(data, name)
         })
         .catch((error) => {
             const errorContainer = document.getElementById('error-container')
@@ -85,11 +87,11 @@ const loadNewsData = (id) => {
 }
 
 
-const showNews = (news) => {
+const showNews = (news, name) => {
     //set the number of category news
     const categoriesNewsNumber = document.getElementById('category-items')
     categoriesNewsNumber.innerHTML = `
-    <p class="p-3">${news.data.length ? news.data.length + ' items found for this category.' : 'No data found for this category.'} </p>
+    <p class="p-3">${news.data.length ? news.data.length + ` items found for ${name ? name : 'All News'} category.` : `No data found for ${name} category.`} </p>
     `
 
     //now set total news in ui
