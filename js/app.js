@@ -95,27 +95,35 @@ const showNews = (news) => {
             <img src="${oneNews.image_url}" class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">${oneNews.title}</h5>
-                <p class="card-text">${oneNews.details.length > 200 ? oneNews.details.slice(0, 200) : oneNews.details}...</p>
+            <div class="card-body ">
+               <div>
+               <h5 class="card-title">${oneNews.title}</h5>
+               <p class="card-text">${oneNews.details.length > 200 ? oneNews.details.slice(0, 200) : oneNews.details}...</p>
+               </div>
+            
+
+            <div class="d-flex flex-row align-items-center justify-content-around mt-2">
+
+            <div class="d-flex flex-row align-items-center">
+            <span><img style="width: 50px; height: 50px; border-radius: 50%;" src="${oneNews.author.img ? oneNews.author.img : 'No photo'}" alt=""></span>
+            <span class="ms-2">${oneNews.author.name ? oneNews.author.name : 'No Name'}</span>
             </div>
 
             <div>
-            all container
-
+            <span><i class="fa-solid fa-eye"></i><span>
+            <span>${oneNews.total_view ? oneNews.total_view : 'No data'}<span>
+            </div>
+    
             <div>
-            author container
+            <button onclick="loadModal()" class="btn btn-success">Show More</button>
             </div>
-        <div>
-        views Container
-        </div>
-        <div>
-        show details button container
-        </div>
+    
+                </div>
+              
             </div>
-          
-        </div>
-    </div > `
+            </div>
+            </div>
+            `
 
         newsContainer.appendChild(div)
     });
