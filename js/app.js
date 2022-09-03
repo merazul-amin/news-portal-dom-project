@@ -95,7 +95,12 @@ const showNews = (news) => {
     const newsContainer = document.getElementById('news-container')
     newsContainer.innerHTML = ''
     const newsArray = news.data
-    // console.log(newsArray)
+
+    //Now sort the objects by total view
+    newsArray.sort((a, b) => {
+        return b.total_view - a.total_view;
+    });
+
 
     newsArray.forEach(oneNews => {
         // console.log(oneNews)
