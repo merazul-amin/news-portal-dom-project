@@ -5,8 +5,20 @@ try {
         .then(res => res.json())
         .then(data => loadCategory(data))
 }
+//this catch is for show error in fetching data in ui
 catch (error) {
-    // console.log(error)
+    const errorContainer = document.getElementById('error-container')
+    errorContainer.innerHTML = `
+    <div class="card mb-3">
+    <div class="row g-0">
+        <div class="col">
+            <div class="card-body">
+                <h1 class="card-title">${error}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+    `
 }
 
 
@@ -34,27 +46,69 @@ const loadCategory = (categorys) => {
 //Now a function for load and show news by category clicking
 const loadNewsData = (id) => {
     // console.log(typeof id)
-    // console.log(id)
+    console.log(id)
     try {
         fetch(`https://openapi.programming-hero.com/api/news/category/0${id}`)
             .then(res => res.json())
             .then(data => showNews(data))
     }
-    catch {
 
+    //this catch is for show error in fetching data in ui
+    catch (error) {
+        const errorContainer = document.getElementById('error-container')
+        errorContainer.innerHTML = `
+        <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col">
+                <div class="card-body">
+                    <h1 class="card-title">${error}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+        `
     }
 
 }
 
 
 const showNews = (news) => {
-    console.log(news)
+    // console.log(news)
     //set the number of category news
     const categoriesNewsNumber = document.getElementById('category-items')
     categoriesNewsNumber.innerHTML = `
-    <p></p>
+    <p>${news.data.length} items found for this category.</p>
     `
+
+    //now set total news in ui
+    const newsContainer = document.getElementById('news-container')
+    newsContainer.innerHTML = ''
+    const newsArray = news.data
+    // console.log(newsArray)
+    newsArray.forEach(oneNews => {
+        console.log(oneNews)
+        const div = document.createElement('div')
+        div.classList.add('card')
+        div.classList.add('mb-3')
+        div.innerHTML = `  <div class="row g-0">
+        <div class="col-md-4">
+            <img src="${oneNews.image_url}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                    additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>`
+
+        newsContainer.appendChild(div)
+    });
+
+
 }
 
-
+loadNewsData(08)
 
