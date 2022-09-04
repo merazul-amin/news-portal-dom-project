@@ -152,7 +152,7 @@ const showNews = (news, name) => {
 
 }
 
-//This function is for load modal data and build with try catch error handling
+//This function is for load modal data and build with try catch error handling.
 
 const loadModalData = (id) => {
 

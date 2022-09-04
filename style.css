@@ -1,3 +1,4 @@
+/* Utilities */
 * {
     font-family: 'Roboto', sans-serif;
 }
@@ -36,4 +37,12 @@
         width: 80% !important;
         margin: 20px auto;
     }
+}
+
+/* This is for blog responsiveness */
+@media screen and (max-width:550px) {
+    #question1 {
+        width: 500px !important;
+    }
+
 }
