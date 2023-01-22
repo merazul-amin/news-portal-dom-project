@@ -1,14 +1,7 @@
-//Firsty load data of category  and emplemet of try catch for showing error types
+//Firstly load data of category  and implement of try catch for showing error types
 fetch(` https://openapi.programming-hero.com/api/news/categories`)
-    .then((response) => {
-        if (response.ok) {
-            return response.json();
-        }
-        throw new Error('Something went wrong');
-    })
-    .then((data) => {
-        loadCategory(data)
-    })
+    .then((response) => response.json())
+    .then((data) => loadCategory(data))
     .catch((error) => {
         const errorContainer = document.getElementById('error-container')
         errorContainer.innerHTML = `
@@ -39,18 +32,18 @@ const spinner = (isLoading) => {
 //Now set a function for set catagories name in ui
 
 
-const loadCategory = (categorys) => {
+const loadCategory = (categories) => {
 
-    const categoriesArray = categorys.data.news_category
+    const categoriesArray = categories.data.news_category
     categoriesArray.forEach(category => {
         // console.log(category.category_name)
-        const categorisContainer = document.getElementById('categories-container')
+        const categoriesContainer = document.getElementById('categories-container')
         const h5 = document.createElement('h5')
 
         h5.innerHTML = `
         <h5 onclick="loadNewsData(${category.category_id},'${category.category_name}')"  style="cursor: pointer;">${category.category_name}</h5>
         `
-        categorisContainer.appendChild(h5)
+        categoriesContainer.appendChild(h5)
     });
 
 }
@@ -59,14 +52,8 @@ const loadCategory = (categorys) => {
 
 const loadNewsData = (id, name) => {
     spinner(true)
-
     fetch(`https://openapi.programming-hero.com/api/news/category/0${id}`)
-        .then((response) => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error('Something went wrong');
-        })
+        .then((response) => response.json())
         .then((data) => {
             showNews(data, name)
         })
